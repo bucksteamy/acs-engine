@@ -14,7 +14,7 @@ spec:
       command: 
         - "/hyperkube"
         - "apiserver"
-        - "--admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota"
+        - "--admission-control=NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,ResourceQuota,Initializer"
         - "--address=0.0.0.0"
         - "--allow-privileged"
         - "--insecure-port=8080"
@@ -42,6 +42,7 @@ spec:
         - "--requestheader-extra-headers-prefix=X-Remote-Extra-"
         - "--requestheader-group-headers=X-Remote-Group"
         - "--requestheader-username-headers=X-Remote-User"
+        - "--runtime-config=admissionregistration.k8s.io/v1alpha1"
       volumeMounts:
         - name: "etc-kubernetes"
           mountPath: "/etc/kubernetes"
